@@ -1,3 +1,4 @@
+'use strict'
 var tasksCompleted = {
     'Anna': 29,
     'Serg': 35,
@@ -10,7 +11,7 @@ var tasksCompleted = {
 function biggest (obj) {
     var result = 0;
     var resultName ='';
-    for (key in obj) {
+    for (let key in obj) {
         if (result < obj[key]) {
             result = obj[key];
             resultName = key;
