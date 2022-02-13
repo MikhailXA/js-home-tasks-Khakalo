@@ -3,7 +3,9 @@ function sum() {
     var numbers = [];
     while (true) {
         var value = prompt("Введите число", 0);
-        if (value === "" || value === null || !isFinite(value)) break;
+        if (value === "" || value === null || !isFinite(value)) {
+            break;
+        }
         numbers.push(+value);
     }
     var sum = 0;
