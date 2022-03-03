@@ -1,0 +1,36 @@
+* {
+  padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+}
+.background {
+  background-image: url("image.jpg") ;
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.wrapper {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+button {
+  padding: 20px;
+  margin: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: antiquewhite;
+}
+button:hover {
+  transform: translateY(-5px);
+  transition-duration: 0.5s;
+  color: white;
+  background-color: grey;
+}
