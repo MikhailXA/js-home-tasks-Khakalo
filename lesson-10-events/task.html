@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<form id="form" action="http://fe.it-academy.by/TestForm.php"></form>
+<script>
+    var dyn_form= [
+        {label:'Разработчики:',name:'dev'},
+        {label:'Название сайта:',name:'name'},
+        {label:'URL сайта:',name:'url'},
+        {label:'Дата запуска сайта:',name:'date'},
+        {label:'Посетителей в сутки:',name:'visitors'},
+        {label:'E-mail для связи:',name:'email'},
+        {label:'Рубрика каталога:',name:'division',
+            variants:[{text:'здоровье',value:1},{text:'домашний уют',value:2},{text:'бытовая техника',value:3}]},
+        {label:'Размещение:',kind:'radio',name:'payment',
+            variants:[{text:'бесплатное',value:1},{text:'платное',value:2},{text:'VIP',value:3}]},
+        {label:'Разрешить отзывы:',name:'votes'},
+        {label:'Описание сайта:',name:'description'},
+        {label:'Опубликовать:'},
+        ];
+    createForm(dyn_form);
+    function createForm() {
+        var Form = document.getElementById("form");
+        for (var i = 0; i < dyn_form.length; i++){
+            for (var k in dyn_form[i]){
+                if (dyn_form[i][k] === "Разработчики:") {
+                    var Label = document.createElement("label");
+                    Form.appendChild(Label);
+                    var BR = document.createElement("br");
+                    Form.appendChild(BR);
+                    var Dev_txt = document.createTextNode("Разработчики:");
+                    Label.appendChild(Dev_txt);
+                    var Dev = document.createElement("input");
+                    Dev.setAttribute("type", "text");
+                    Dev.setAttribute("style","margin-left: 52px; width: 499px");
+                    Dev.setAttribute("name","dev");
+                    Label.appendChild(Dev);
+                }
+                if (dyn_form[i][k] === "Название сайта:") {
+                    var Label = document.createElement("label");
+                    Form.appendChild(Label);
+                    var BR = document.createElement("br");
+                    Form.appendChild(BR);
+                    var Name_txt = document.createTextNode("Название сайта: ");
+                    Label.appendChild(Name_txt);
+                    var Name = document.createElement("input");
+                    Name.setAttribute("type", "text");
+                    Name.setAttribute("style","margin-left: 36px; width: 500px");
+                    Name.setAttribute("name","name");
+                    Label.appendChild(Name);
+                }
+
+                if(dyn_form[i][k] === "URL сайта:"){
+                    var Label = document.createElement("label");
+                    Form.appendChild(Label);
+                    var BR = document.createElement("br");
+                    Form.appendChild(BR);
+                    var URL = document.createTextNode("URL сайта: ");
+                    Label.appendChild(URL);
+                    var URL = document.createElement("input");
+                    URL.setAttribute("type", "text");
+                    URL.setAttribute("style","margin-left: 68px; width: 500px");
+                    URL.setAttribute("name","url");
+                    Label.appendChild(URL);
+                }
+                if (dyn_form[i][k] === "Дата запуска сайта:") {
+                    var Label = document.createElement("label");
+                    Form.appendChild(Label);
+                    var BR = document.createElement("br");
+                    Form.appendChild(BR);
+                    var DATE = document.createTextNode("Дата запуска сайта:");
+                    Label.appendChild(DATE);
+                    var Date = document.createElement("input");
+                    Date.setAttribute("type", "text");
+                    Date.setAttribute("style","margin-left: 17px; width: 100px");
+                    Date.setAttribute("name","date");
+                    Label.appendChild(Date);
+                }
+
+                if(dyn_form[i][k] === "Посетителей в сутки:"){
+                    var Label = document.createElement("label");
+                    Form.appendChild(Label);
+                    var BR = document.createElement("br");
+                    Form.appendChild(BR);
+                    var VISITORS = document.createTextNode("Посетителей в сутки: ");
+                    Label.appendChild(VISITORS);
+                    var SiteVisitors = document.createElement("input");
+                    SiteVisitors.setAttribute("type", "text");
+                    SiteVisitors.setAttribute("style","width: 100px");
+                    SiteVisitors.setAttribute("name","visitors");
+                    Label.appendChild(SiteVisitors);
+                }
+
+                if(dyn_form[i][k] === "E-mail для связи:"){
+                    var Label = document.createElement("label");
+                    Form.appendChild(Label);
+                    var BR = document.createElement("br");
+                    Form.appendChild(BR);
+                    var EMAIL = document.createTextNode("E-mail для связи: ");
+                    Label.appendChild(EMAIL);
+                    var SiteEmail = document.createElement("input");
+                    SiteEmail.setAttribute("type", "text");
+                    SiteEmail.setAttribute("style","margin-left: 29px; width: 200px");
+                    SiteEmail.setAttribute("name","email");
+                    Label.appendChild(SiteEmail);
+                }
+
+                if(dyn_form[i][k] === "Рубрика каталога:"){
+                    var Label = document.createElement("label");
+                    Form.appendChild(Label);
+                    var BR = document.createElement("br");
+                    Form.appendChild(BR);
+                    var CATALOG = document.createTextNode("Рубрика каталога: ");
+                    Label.appendChild(CATALOG);
+
+                    if(dyn_form[i].variants){
+                        for (var j = 0; j < dyn_form[i].variants.length; j++){
+                            for (var K in dyn_form[i].variants[j]){
+
+                                if (dyn_form[i].variants[j][K] === "здоровье") {
+                                    var headingCatalog = document.createElement("select");
+                                    headingCatalog.setAttribute("name", "division");
+                                    headingCatalog.setAttribute("style", "margin-left: 23px");
+                                    Label.appendChild(headingCatalog);
+                                    var Option = document.createElement("option");
+                                    headingCatalog.appendChild(Option);
+                                    var Health = document.createTextNode("здоровье");
+                                    Option.setAttribute("value", "1");
+                                    Option.appendChild(Health);
+                                }
+
+                                if (dyn_form[i].variants[j][K] === "домашний уют") {
+                                    var Option = document.createElement("option");
+                                    headingCatalog.appendChild(Option);
+                                    var home = document.createTextNode("домашний уют");
+                                    Option.setAttribute("value", "2");
+                                    Option.appendChild(home);
+                                }
+
+                                if (dyn_form[i].variants[j][K] === "бытовая техника") {
+                                    var Option = document.createElement("option");
+                                    headingCatalog.appendChild(Option);
+                                    var tech = document.createTextNode("бытовая техника");
+                                    Option.setAttribute("value", "3");
+                                    Option.setAttribute("selected", "true");
+                                    Option.appendChild(tech);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if(dyn_form[i][k] === "Размещение:"){
+                    var Label = document.createElement("label");
+                    Form.appendChild(Label);
+                    var BR = document.createElement("br");
+                    Form.appendChild(BR);
+                    var Accommodation = document.createTextNode("Размещение: ");
+                    Label.appendChild(Accommodation);
+
+                    if(dyn_form[i].variants){
+                        for (var l = 0; l < dyn_form[i].variants.length; l++){
+                            for (var Key in dyn_form[i].variants[l]){
+
+                                if (dyn_form[i].variants[l][Key] === "бесплатное") {
+                                    var radioButton = document.createElement("input");
+                                    radioButton.setAttribute("type", "radio");
+                                    radioButton.setAttribute("name", "payment");
+                                    radioButton.setAttribute("value", "1");
+                                    radioButton.setAttribute("style", "margin-left: 60px");
+                                    Label.appendChild(radioButton);
+                                    var Free = document.createTextNode("бесплатное");
+                                    Label.appendChild(Free);
+                                }
+
+                                if (dyn_form[i].variants[l][Key] === "платное") {
+                                    var radioButton1 = document.createElement("input");
+                                    radioButton1.setAttribute("type", "radio");
+                                    radioButton1.setAttribute("name", "payment");
+                                    radioButton1.setAttribute("value", "2");
+                                    Label.appendChild(radioButton1);
+                                    var Paid = document.createTextNode("платное");
+                                    Label.appendChild(Paid);
+                                }
+
+                                if (dyn_form[i].variants[l][Key] === "VIP") {
+                                    var radioButton2 = document.createElement("input");
+                                    radioButton2.setAttribute("type", "radio");
+                                    radioButton2.setAttribute("name", "payment");
+                                    radioButton2.setAttribute("value", "3");
+                                    Label.appendChild(radioButton2);
+                                    var VIP = document.createTextNode("VIP");
+                                    Label.appendChild(VIP);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if(dyn_form[i][k] === "Разрешить отзывы:"){
+                    var Label = document.createElement("label");
+                    Form.appendChild(Label);
+                    var BR = document.createElement("br");
+                    Form.appendChild(BR);
+                    var REVIEWS = document.createTextNode("Разрешить отзывы: ");
+                    Label.appendChild(REVIEWS);
+                    var AllowReviews = document.createElement("input");
+                    AllowReviews.setAttribute("type", "checkbox");
+                    AllowReviews.setAttribute("style","margin-left: 16px");
+                    AllowReviews.setAttribute("name","votes");
+                    AllowReviews.setAttribute("checked","true");
+                    Label.appendChild(AllowReviews);
+                }
+
+                if(dyn_form[i][k] === "Описание сайта:"){
+                    var Label = document.createElement("label");
+                    Form.appendChild(Label);
+                    var BR = document.createElement("br");
+                    Form.appendChild(BR);
+                    var DESCRIPTION = document.createTextNode("Описание сайта: ");
+                    Label.appendChild(DESCRIPTION);
+                    Label.appendChild(BR);
+                    var SiteDecription = document.createElement("textarea");
+                    SiteDecription.setAttribute("style","width: 650px; height: 50px");
+                    SiteDecription.setAttribute("name","description");
+                    Label.appendChild(SiteDecription);
+                }
+
+                if(dyn_form[i][k] === "Опубликовать:"){
+                    var BR = document.createElement("br");
+                    Form.appendChild(BR);
+                    var Publish = document.createElement("input");
+                    Publish.setAttribute("type","submit");
+                    Publish.setAttribute("value","Опубликовать");
+                    Form.appendChild(Publish);
+                }
+
+            }
+        }
+    }
+</script>
+</body>
+</html>
