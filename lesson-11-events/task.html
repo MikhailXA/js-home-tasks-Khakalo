@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>События drag&drop</title>
+</head>
+<body>
+<img id=coon src="img/racoon-1.jpg" style='width: 150px; height: 100px' alt="енот1">
+<img id=coon3 src="img/racoon-3.jpg" style='width: 100px; height: 100px' alt="енот3">
+<img id=coon2 src="img/racoon-2.jpg" style='width: 100px; height: 100px' alt="енот2">
+<script>
+    coon.onmousedown = function (event) {
+        var shiftX = event.clientX - coon.getBoundingClientRect().left;
+        var shiftY = event.clientY - coon.getBoundingClientRect().top;
+        coon.style.position = 'absolute';
+        coon.style.zIndex = 1000;
+        document.body.append(coon);
+        moveAt(event.pageX, event.pageY);
+
+        function moveAt(pageX, pageY) {
+            coon.style.left = pageX - shiftX + 'px';
+            coon.style.top = pageY - shiftY + 'px';
+        }
+
+        function onMouseMove(event) {
+            moveAt(event.pageX, event.pageY);
+        }
+
+        document.addEventListener('mousemove', onMouseMove);
+
+        coon.onmouseup = function () {
+            document.removeEventListener('mousemove', onMouseMove);
+            coon.onmouseup = null;
+        };
+
+    };
+    coon.ondragstart = function () {
+        return false;
+    };
+
+
+    coon3.onmousedown = function (event) {
+        var shiftX = event.clientX - coon3.getBoundingClientRect().left;
+        var shiftY = event.clientY - coon3.getBoundingClientRect().top;
+        coon3.style.position = 'absolute';
+        coon3.style.zIndex = 1000;
+        document.body.append(coon3);
+        moveAt(event.pageX, event.pageY);
+
+        function moveAt(pageX, pageY) {
+            coon3.style.left = pageX - shiftX + 'px';
+            coon3.style.top = pageY - shiftY + 'px';
+        }
+
+        function onMouseMove(event) {
+            moveAt(event.pageX, event.pageY);
+        }
+
+        document.addEventListener('mousemove', onMouseMove);
+
+        coon3.onmouseup = function () {
+            document.removeEventListener('mousemove', onMouseMove);
+            coon3.onmouseup = null;
+        };
+
+    };
+    coon3.ondragstart = function () {
+        return false;
+    };
+
+
+
+    coon2.onmousedown = function (event) {
+        var shiftX = event.clientX - coon2.getBoundingClientRect().left;
+        var shiftY = event.clientY - coon2.getBoundingClientRect().top;
+        coon2.style.position = 'absolute';
+        coon2.style.zIndex = 1000;
+        document.body.append(coon2);
+        moveAt(event.pageX, event.pageY);
+
+        function moveAt(pageX, pageY) {
+            coon2.style.left = pageX - shiftX + 'px';
+            coon2.style.top = pageY - shiftY + 'px';
+        }
+
+        function onMouseMove(event) {
+            moveAt(event.pageX, event.pageY);
+        }
+
+        document.addEventListener('mousemove', onMouseMove);
+
+        coon2.onmouseup = function () {
+            document.removeEventListener('mousemove', onMouseMove);
+            coon2.onmouseup = null;
+        };
+    };
+    coon2.ondragstart = function () {
+        return false;
+    };
+</script>
+</body>
+</html>
