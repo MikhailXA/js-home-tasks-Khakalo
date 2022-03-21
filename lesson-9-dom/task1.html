@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="task1.css">
+</head>
+<body>
+  <section class="background">
+    <div class="wrapper">
+      <div>
+        <button type="button" onclick="addDrink()">Ввод информации о напитке</button>
+      </div>
+      <div>
+        <button type="button" onclick="getDrink()">Получение информации о напитке</button>
+      </div>
+      <div>
+        <button type="button" onclick="removeDrink()">Удаление информации о напитке</button>
+      </div>
+      <div>
+        <button type="button" onclick="showAllDrinks()">Перечень всех напитков</button>
+      </div>
+      </div>
+  </section>
+</body>
+<script src="task1.js"></script>
+<script>
+  var DrinkStorage = new THashStorage()
+  function addDrink() {
+      var drink = {};
+      var drinkName = '';
+      drinkName = prompt('Name of the drink?');
+      drink.alco = confirm(('Is it alcoholic?')) ? 'alcoholic' : 'alcohol-free';
+      drink.recipe = prompt('What are the ingredients?');
+      DrinkStorage.AddValue(drinkName,drink);
+      console.log('Name: ' + drinkName + '\n' + drink.alco + '\n' + 'Recipe: ' + drink.recipe);
+  }
+  function getDrink() {
+      var drink = {};
+      var drinkName = prompt('Name of the drink?');
+      DrinkStorage.GetValue(drinkName);
+      console.log('Name: ' + drinkName + '\n' + drink.alco + '\n' + 'Recipe: ' + drink.recipe)
+  }
+  function removeDrink() {
+      var drinkName = prompt('Name of the drink?');
+      DrinkStorage.DeleteValue(drinkName);
+      console.log(drinkName + ' is removed')
+  }
+  function showAllDrinks() {
+      console.log(DrinkStorage.GetKeys());
+  }
+</script>
+</html>
